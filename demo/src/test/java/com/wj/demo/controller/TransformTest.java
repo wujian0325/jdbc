@@ -16,4 +16,15 @@ public class TransformTest extends ApplicationTests {
         transform.tran();
     }
 
+
+    @Test
+    public void getNum() throws Exception {
+        transform.getNum();
+    }
+
+    @Test
+    public void delete () {
+        transform.delete();
+    }
+
 }

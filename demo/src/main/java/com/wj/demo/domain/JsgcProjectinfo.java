@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,10 +13,9 @@ import java.util.Date;
  *
  * @author 吴健
  */
-
 @Data
 @Document(indexName = "edataapp", type = "JsgcProjectinfo")
-public class JsgcProjectinfo {
+public class JsgcProjectinfo implements Serializable{
 
     @Id
     private String id;
@@ -31,4 +31,6 @@ public class JsgcProjectinfo {
     private Double price;
 
     private String liXiangGuid;
+
+    private Double touZiGuSuan;
 }

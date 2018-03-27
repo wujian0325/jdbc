@@ -296,11 +296,10 @@
   </select>
 
 
-  <select id="select" resultMap="BaseResultMap" parameterType="java.util.List">
+  <select id="selectByid" resultMap="BaseResultMap" parameterType="java.util.List">
   select * from JSGC_ProjectInfo where LiXiangProjectGuid in
   <foreach collection="ids" item="id" open="(" close=")" separator=",">
   #{id}
   </foreach>
-
   </select>
 </mapper>

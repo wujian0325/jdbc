@@ -22,8 +22,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MapperScan(basePackages = {
-        "com.wj.demo.domain.sqlserver.mapper",
-        "com.wj.demo.domain.sqlserver.mapper"
+        "com.wj.demo.domain.sqlserver.mapper","mapper"
 }, sqlSessionFactoryRef = "njdatanewSqlSessionFactoryBean")
 public class SpringNjdataNewDataSourceConfig {
 
@@ -52,12 +51,10 @@ public class SpringNjdataNewDataSourceConfig {
     public SqlSessionFactoryBean userDSSqlSessionFactory(@Qualifier("njdatanewDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
-        sqlSessionFactory.setTypeAliasesPackage(
-                "com.wj.demo.domain.sqlserver.mapper"
-        );
+        sqlSessionFactory.setTypeAliasesPackage("com.wj.demo.domain.sqlserver");
         sqlSessionFactory.setMapperLocations(
                 ResourcePatternUtils.getResourcePatternResolver(resourceLoader)
-                        .getResources("classpath:com/wj/demo/domain/sqlserver/mapper/*.xml"));
+                        .getResources("classpath*:mapper/*Mapper.xml"));
         return sqlSessionFactory;
     }
 
