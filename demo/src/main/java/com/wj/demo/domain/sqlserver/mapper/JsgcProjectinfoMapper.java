@@ -14,12 +14,9 @@ public interface JsgcProjectinfoMapper {
 
     List<JsgcProjectinfo> selectByExample(JsgcProjectinfoExample example);
 
-    @Select("select * from (select  ROW_NUMBER() OVER (order By rowguid) as roenum, * from JSGC_ProjectInfo) a " +
+    @Select(" select * from (select  ROW_NUMBER() OVER (order By rowguid) as roenum, * from JSGC_ProjectInfo) a " +
             " where a.roenum > #{start} and a.roenum <= #{end}" )
     List<JsgcProjectinfo> selectByCount(@Param("start") int start, @Param("end") int end);
 
     List<JsgcProjectinfo> selectByid(@Param("ids") List<String> ids);
-
-
-
 }

@@ -4,7 +4,6 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,24 +12,61 @@ import java.util.Date;
  *
  * @author 吴健
  */
+
 @Data
 @Document(indexName = "edataapp", type = "JsgcProjectinfo")
-public class JsgcProjectinfo implements Serializable{
+public class JsgcProjectinfo {
 
     @Id
     private String id;
 
+    private String liXiangProjectGuid;
+
+    private Double touZiGuSuan;
+
+    private String projectNo;
+
+    private String jianSheDanWei;
+
+    private String jianSheDiDian;
+
+    private String xingZhengQuYu;
+
     private String beiAnWenHao;
-
-    private String title;
-
-    private String beiAnBuMen;
 
     private Date liXiangDate;
 
-    private Double price;
+    private String changWenHao;
 
-    private String liXiangGuid;
+    private Date changeDate;
 
-    private Double touZiGuSuan;
+    private String touZiXingZhi;
+
+    private String zhaoBiaoType;
+
+    private String hangYeFenLei;
+
+    private String jianSheType;
+
+    private String projectJiaoYiType;
+
+    private String jianSheDwType;
+
+    private String projectGuiMo;
+
+    private String zhaoBiaoFangShi;
+
+    private Double jytzb;
+
+    private String ziJinType;
+
+    private String projectJiaoYiTypeSh;
+
+    private String fangWuJianZhuLeiXing;
+
+    private String projectName;
+
+    private String beiAnTitle;
+
+    private String chaneContent;
 }

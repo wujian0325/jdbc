@@ -7,4 +7,5 @@
     <logger name="com.wj.demo" level="TRACE"/>
     <logger name="com.wj.demo.domain.sqlserver.mapper" level="DEBUG" />
     <logger name="com.wj.demo" level="INFO" />
+    <logger name="com.wj.demo" level="DEBUG" />
 </configuration>

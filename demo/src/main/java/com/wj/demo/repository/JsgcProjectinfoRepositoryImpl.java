@@ -1,10 +1,12 @@
 package com.wj.demo.repository;
 
 import com.wj.demo.domain.JsgcProjectinfo;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * JsgcProjectinfo实体操作
@@ -14,11 +16,13 @@ import java.util.List;
  */
 public interface JsgcProjectinfoRepositoryImpl extends ElasticsearchRepository<JsgcProjectinfo, String> {
 
-    Iterable<JsgcProjectinfo> findJsgcProjectinfosByLiXiangGuidIn(List<String> liXiangGuids);
+//    @Query("{\"bool\" : {\"must\" : {\"field\" : {\"id\" : \"?0\"}} }}")
+    @Query("{\"bool\" : {\"must\" : {\"match\" : {\"id.keyword\" : \"?0\"}} }}")
+    Optional<JsgcProjectinfo> getModel(String id);
 
-    Iterable<JsgcProjectinfo> findJsgcProjectinfosByLiXiangGuidInOrderByTouZiGuSuanDesc(List<String> liXiangGuids);
+    @Query("{\"bool\" : {\"must\" : {\"range\" : {\"touZiGuSuan\" : { \"gte\" : ?0 }}}}}")
+    List<JsgcProjectinfo> getList(int touZiGuSuan, Pageable pageable);
 
-    Iterable<JsgcProjectinfo> findJsgcProjectinfosByPriceIsGreaterThanEqual(double price);
-
-
+    @Query(value = "{\"bool\" : {\"must\" : {\"bool\" : {\"should\" : {\"match\" : {\"id.keyword\" : ?0}}}}}}")
+    List<JsgcProjectinfo> getList(List<String> ids);
 }

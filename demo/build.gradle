@@ -24,6 +24,7 @@ repositories {
 	maven {
 		url="http://clojars.org/repo/"
 	}
+	maven { url 'http://maven.aliyun.com/nexus/content/groups/public'}
 }
 
 
